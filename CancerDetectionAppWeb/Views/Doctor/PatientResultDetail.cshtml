@@ -1,0 +1,402 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlus - Dermatolojik AI Analiz Sonuçları</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/ResultDetail.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTTQ1IDEwQzI1LjY3IDEwIDEwIDI1LjY3IDEwIDQ1czE1LjY3IDM1IDM1IDM1IDM1LTE1LjY3IDM1LTM1UzY0LjMzIDEwIDQ1IDEweiIgZmlsbD0iI2YzZjRmNiIvPgogICAgPHBhdGggZD0iTTMyIDI5djE2aDEwVjI5SDMyem0xNiAwdjhoMTB2LThoLTEwem0wIDE2aDEwdi04aC0xMHY4eiIgZmlsbD0iIzI1NjNlYiIvPgogICAgPHBhdGggZD0iTTkwIDIzaDV2MjNoLTV2LTIzem0xNSA1LjVjLTEuNS0xLTMuMjUtMS41LTUuMjUtMS41LTIgMC0zLjc1LjVjLTIuNS45LTQuNSAzLTUuMjUgNS41LS41IDEuNS0uNzUgMy0uNzUgNC41IDAgMS41LjI1IDMgLjc1IDQuNSAxLjUgNCA1LjI1IDYuNSA5LjUgNi41IDMgMCA2LTEuNSA3LjUtNC41aDYuNWMtMiA2LTcuNSAxMC0xNCAxMC04IDAtMTQuNS01LTE2LjUtMTMtLjUtMi0uNS00LS41LTYgMC0yIDAtNCAuNS02IDMtOCAxMC0xMyAxOC41LTEzIDYgMCAxMSA0IDEzLjUgOS41aC02LjVjLTEtMi0yLjUtNC00LjUtNS41em0yMC41LTcuNXYyNmgtNXYtMjZoNXptMTEgN2MtMy0yLTYuNS0zLTEwLTNoLS41djVoLjVjMiAwIDQgLjUgNS41IDEuNSAyIDEuNSAzIDQgMyA2LjVzLTEgNS0zIDYuNWMtMS41IDEuNS0zLjUgMi01LjUgMmgtLjV2NWguNWMzLjUgMCA3LTEgMTAtMy41IDIuNS0yIDQtNS41IDQtOS41cy0xLjUtNy41LTQtOS41em0xOC01di0yaDVWMTloNXY1aDV2NWgtNXYxMWMwIDEgLjUgMS41IDEuNSAxLjVoMy41djVoLTVjLTMgMC01LjUtMi41LTUuNS01LjVWMjloLTV2LTVoNXpNMTgwIDI0Yy01LjUgMC0xMCAzLTEyLjUgNy41LjUtNi41LTUuNS0xMi41LTEyLTEyLjVoLTEyLjV2MjYuNWg1VjI0aDcuNWMzLjUgMCA2LjUgMyA2LjUgNi41VjQ1SDIxOHYtOS41YzAtNi41LTUuNS0xMS41LTEyLTExLjV6bTcgMTYuNWgtMTJ2LTVjMC0zLjUgMy02LjUgNi41LTYuNXM2LjUgMyA2LjUgNi41di01eiIgZmlsbD0iIzJjM2U1MCIvPgogIDwvZz4KPC9zdmc+" alt="MediPlus Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Randevular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Hastalar</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown">
+                            Raporlar
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Klinik Raporları</a></li>
+                            <li><a class="dropdown-item" href="#">Hasta Analizleri</a></li>
+                            <li><a class="dropdown-item" href="#">Teşhis İstatistikleri</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn-notification me-3" type="button">
+                        <i class="fas fa-bell fa-lg"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="dropdown">
+                        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span class="d-none d-md-block me-2 text-end">
+                                <span class="d-block text-dark fw-bold">Dr. Ahmet Yılmaz</span>
+                                <small class="text-muted">Dermatolog</small>
+                            </span>
+                            <img src="#" alt="" class="avatar">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Ayarlar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="page-title">Yapay Zeka Dermatolojik Analiz</h2>
+                <p class="page-subtitle">Cilt lezyonu fotoğrafı AI değerlendirmesi ve teşhis raporu</p>
+            </div>
+            <div>
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left me-2"></i>Hasta Sayfasına Dön
+                </a>
+            </div>
+        </div>
+
+        <!-- Patient Info Card -->
+        <div class="patient-info-card">
+            <img src="#"class="patient-avatar">
+            <div class="patient-details">
+                <h4>Ali Demir</h4>
+                <p><i class="fas fa-id-card me-2"></i>Hasta No: #20256398</p>
+                <div class="d-flex gap-4">
+                    <p><i class="fas fa-birthday-cake me-2"></i>35 Yaş</p>
+                    <p><i class="fas fa-venus me-2"></i>Erkek</p>
+                </div>
+                <div class="patient-tags">
+                    <span class="patient-tag">Dermatoloji</span>
+                    <span class="patient-tag warning">Kontrol Randevusu</span>
+                    <span class="patient-tag danger">Alerji: Penisilin</span>
+                </div>
+            </div>
+            <div class="ms-auto d-none d-md-block">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#patientHistoryModal">
+                    <i class="fas fa-file-medical me-2"></i>Hasta Geçmişi
+                </button>
+            </div>
+        </div>
+
+        <!-- Analysis Card -->
+        <div class="card">
+            <div class="card-header">
+                <div class="analysis-header">
+                    <h5><i class="fas fa-microscope me-2"></i>Dermatolojik Lezyon Analizi</h5>
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="analysis-id">#ANA-20250427-089</span>
+                        <span class="analysis-timestamp"><i class="far fa-clock me-1"></i>27 Nisan 2025, 14:35</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+               
+
+                <!-- Diagnosis Results -->
+                <div class="results-card">
+                    <div class="result-header">
+                        <h5 class="result-title"><i class="fas fa-chart-pie"></i>AI Teşhis Sonucu</h5>
+                        <span class="confidence-badge high"><i class="fas fa-check-circle"></i>Yüksek Güven (%95)</span>
+                    </div>
+                    <div class="diagnosis-label benign">Benign (İyi Huylu)</div>
+                    <div class="diagnosis-info">
+                        <div class="diagnosis-description">
+                            <p>AI analizi, bu cilt lezyonunun <strong>Nevus (Ben)</strong> olduğunu yüksek güvenle (%95) göstermektedir. Lezyon görünümü tipik benign özellikleri taşımaktadır: düzgün sınırlar, homojen pigmentasyon ve simetrik yapı.</p>
+                            <p>Bu tip lezyonlar genellikle zararsızdır ve müdahale gerektirmez, ancak düzenli takip önerilir. Hastanın önceki muayenelerinde de benzer nevüsler tespit edilmiştir.</p>
+                        </div>
+                        <div class="diagnosis-stats">
+                            <div class="stat-item">
+                                <div>
+                                    <div class="stat-label">Melanoma İhtimali</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress progress-low" style="width: 5%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-value">%5</div>
+                            </div>
+                            <div class="stat-item">
+                                <div>
+                                    <div class="stat-label">Bazal Hücreli Karsinom</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress progress-low" style="width: 3%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-value">%3</div>
+                            </div>
+                            <div class="stat-item">
+                                <div>
+                                    <div class="stat-label">Skuamöz Hücreli Karsinom</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress progress-low" style="width: 2%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-value">%2</div>
+                            </div>
+                            <div class="stat-item">
+                                <div>
+                                    <div class="stat-label">Nevus (Ben)</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress progress-high" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-value">%95</div>
+                            </div>
+                            <div class="stat-item">
+                                <div>
+                                    <div class="stat-label">Seboreik Keratoz</div>
+                                    <div class="stat-bar">
+                                        <div class="stat-progress progress-low" style="width: 8%"></div>
+                                    </div>
+                                </div>
+                                <div class="stat-value">%8</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+            @*     <!-- Timeline Analysis -->
+                <div class="timeline-container">
+                    <h5 class="mb-3"><i class="fas fa-history me-2"></i>Analiz Süreci</h5>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-time">14:35:12</span>
+                                <h6 class="timeline-title">Görüntü Yüklendi</h6>
+                                <p class="timeline-description">Hasta görüntüsü sisteme yüklendi ve ön işleme tabi tutuldu.</p>
+                                <span class="timeline-badge badge-ai">AI İşlemi</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-time">14:35:45</span>
+                                <h6 class="timeline-title">Dermatoskopik Görüntü Analizi</h6>
+                                <p class="timeline-description">Lezyon sınırları belirlendi ve dermatoskopik özellikler çıkarıldı.</p>
+                                <span class="timeline-badge badge-ai">AI İşlemi</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-time">14:36:10</span>
+                                <h6 class="timeline-title">Derin Öğrenme Analizi</h6>
+                                <p class="timeline-description">CNN temelli model tarafından sınıflandırma yapıldı ve benign tanısı konuldu.</p>
+                                <span class="timeline-badge badge-ai">AI İşlemi</span>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-time">14:37:05</span>
+                                <h6 class="timeline-title">AI Tanı Raporu Oluşturuldu</h6>
+                                <p class="timeline-description">Hasta verileri ve görüntü analizi sonuçları birleştirilerek nihai rapor oluşturuldu.</p>
+                                <span class="timeline-badge badge-ai">AI İşlemi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> *@
+
+                <!-- Doctor's Action -->
+                <div class="doctor-action">
+                    <div class="action-header">
+                        <div class="action-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h5 class="action-title">Doktor Değerlendirmesi ve Sonuç</h5>
+                    </div>
+                    <p>AI tanısını değerlendirin ve sonraki adımları belirleyin:</p>
+
+                    <div class="action-options">
+                        <div class="action-option">
+                            <input type="radio" name="decision" id="confirmDiagnosis" class="form-check-input action-option-radio" checked>
+                            <label for="confirmDiagnosis" class="form-check-label">AI tanısını onaylıyorum - Nevus (Ben)</label>
+                        </div>
+                        <div class="action-option">
+                            <input type="radio" name="decision" id="partialConfirm" class="form-check-input action-option-radio">
+                            <label for="partialConfirm" class="form-check-label">AI tanısını kısmen onaylıyorum (açıklama ekleyin)</label>
+                        </div>
+                        <div class="action-option">
+                            <input type="radio" name="decision" id="differentDiagnosis" class="form-check-input action-option-radio">
+                            <label for="differentDiagnosis" class="form-check-label">Farklı bir tanı öneriyorum</label>
+                        </div>
+                        <div class="action-option">
+                            <input type="radio" name="decision" id="furtherTests" class="form-check-input action-option-radio">
+                            <label for="furtherTests" class="form-check-label">Ek test/biyopsi gerekli</label>
+                        </div>
+                    </div>
+
+                    <div class="action-field">
+                        <label for="doctorNotes" class="form-label">Doktor Notları:</label>
+                        <textarea class="form-control" id="doctorNotes" rows="4" placeholder="Değerlendirmenizi ve hasta için önerilerinizi buraya ekleyin..."></textarea>
+                    </div>
+
+                    <div class="action-field">
+                        <label class="form-label">Hasta İçin Önerilen Aksiyon:</label>
+                        <select class="form-select">
+                            <option selected>Takip ve izlem - 6 ay sonra kontrol</option>
+                            <option>Takip ve izlem - 3 ay sonra kontrol</option>
+                            <option>Biyopsi için yönlendirme</option>
+                            <option>Cerrahi müdahale gerekli</option>
+                            <option>Dermatolojik tedavi başlanması</option>
+                            <option>Ek tetkikler/konsültasyon</option>
+                        </select>
+                    </div>
+
+                    <div class="action-footer">
+                        <button class="btn btn-outline-primary">Taslak Olarak Kaydet</button>
+                        <button class="btn btn-primary">Değerlendirmeyi Tamamla</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Patient History Modal -->
+    <div class="modal fade" id="patientHistoryModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ayşe Demir - Hasta Geçmişi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-3">Önceki Teşhisler</h6>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tarih</th>
+                                        <th>Teşhis</th>
+                                        <th>Doktor</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15.10.2024</td>
+                                        <td>Seboreik Dermatit</td>
+                                        <td>Dr. Mehmet Öz</td>
+                                        <td>Topikal kortikosteroid tedavisi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>22.05.2024</td>
+                                        <td>Nevus - Multiple</td>
+                                        <td>Dr. Ahmet Yılmaz</td>
+                                        <td>İzlem önerisi</td>
+                                    </tr>
+                                    <tr>
+                                        <td>03.12.2023</td>
+                                        <td>Alerjik Kontakt Dermatit</td>
+                                        <td>Dr. Ayşe Kaya</td>
+                                        <td>Alerjen eliminasyonu, topikal tedavi</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold mb-3">İlaç Geçmişi</h6>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>İlaç</th>
+                                        <th>Başlangıç</th>
+                                        <th>Bitiş</th>
+                                        <th>Dozaj</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Mometazon Furoat %0.1 Krem</td>
+                                        <td>15.10.2024</td>
+                                        <td>30.10.2024</td>
+                                        <td>Günde 1x, etkilenen bölgelere ince tabaka</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Desloratadin 5mg Tablet</td>
+                                        <td>03.12.2023</td>
+                                        <td>17.12.2023</td>
+                                        <td>Günde 1x1</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6 class="fw-bold mb-3">Alerji ve Hassasiyetler</h6>
+                        <ul class="list-group">
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="badge bg-danger me-2">Ciddi</span>
+                                <div>
+                                    <strong>Penisilin</strong>
+                                    <div class="small text-muted">2019'da belgelenmiş anafilaktik reaksiyon</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="badge bg-warning text-dark me-2">Orta</span>
+                                <div>
+                                    <strong>Nikelli takılar</strong>
+                                    <div class="small text-muted">Kontakt dermatit</div>
+                                </div>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center">
+                                <span class="badge bg-info text-dark me-2">Hafif</span>
+                                <div>
+                                    <strong>Parfümlü kozmetikler</strong>
+                                    <div class="small text-muted">Cilt irritasyonu</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Kapat</button>
+                    <button type="button" class="btn btn-primary">Tam Dosyayı Görüntüle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

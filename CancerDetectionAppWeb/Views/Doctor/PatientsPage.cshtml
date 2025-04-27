@@ -1,0 +1,583 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediPlus - Dermatoloji Cilt Fotoğrafı Yükleme</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/css/patientpage.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjYwIiB2aWV3Qm94PSIwIDAgMjAwIDYwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxnIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTTQ1IDEwQzI1LjY3IDEwIDEwIDI1LjY3IDEwIDQ1czE1LjY3IDM1IDM1IDM1IDM1LTE1LjY3IDM1LTM1UzY0LjMzIDEwIDQ1IDEweiIgZmlsbD0iI2YzZjRmNiIvPgogICAgPHBhdGggZD0iTTMyIDI5djE2aDEwVjI5SDMyem0xNiAwdjhoMTB2LThoLTEwem0wIDE2aDEwdi04aC0xMHY4eiIgZmlsbD0iIzI1NjNlYiIvPgogICAgPHBhdGggZD0iTTkwIDIzaDV2MjNoLTV2LTIzem0xNSA1LjVjLTEuNS0xLTMuMjUtMS41LTUuMjUtMS41LTIgMC0zLjc1LjVjLTIuNS45LTQuNSAzLTUuMjUgNS41LS41IDEuNS0uNzUgMy0uNzUgNC41IDAgMS41LjI1IDMgLjc1IDQuNSAxLjUgNCA1LjI1IDYuNSA5LjUgNi41IDMgMCA2LTEuNSA3LjUtNC41aDYuNWMtMiA2LTcuNSAxMC0xNCAxMC04IDAtMTQuNS01LTE2LjUtMTMtLjUtMi0uNS00LS41LTYgMC0yIDAtNCAuNS02IDMtOCAxMC0xMyAxOC41LTEzIDYgMCAxMSA0IDEzLjUgOS41aC02LjVjLTEtMi0yLjUtNC00LjUtNS41em0yMC41LTcuNXYyNmgtNXYtMjZoNXptMTEgN2MtMy0yLTYuNS0zLTEwLTNoLS41djVoLjVjMiAwIDQgLjUgNS41IDEuNSAyIDEuNSAzIDQgMyA2LjVzLTEgNS0zIDYuNWMtMS41IDEuNS0zLjUgMi01LjUgMmgtLjV2NWguNWMzLjUgMCA3LTEgMTAtMy41IDIuNS0yIDQtNS41IDQtOS41cy0xLjUtNy41LTQtOS41em0xOC01di0yaDVWMTloNXY1aDV2NWgtNXYxMWMwIDEgLjUgMS41IDEuNSAxLjVoMy41djVoLTVjLTMgMC01LjUtMi41LTUuNS01LjVWMjloLTV2LTVoNXpNMTgwIDI0Yy01LjUgMC0xMCAzLTEyLjUgNy41LjUtNi41LTUuNS0xMi41LTEyLTEyLjVoLTEyLjV2MjYuNWg1VjI0aDcuNWMzLjUgMCA2LjUgMyA2LjUgNi41VjQ1SDIxOHYtOS41YzAtNi41LTUuNS0xMS41LTEyLTExLjV6bTcgMTYuNWgtMTJ2LTVjMC0zLjUgMy02LjUgNi41LTYuNXM2LjUgMyA2LjUgNi41di01eiIgZmlsbD0iIzJjM2U1MCIvPgogIDwvZz4KPC9zdmc+" alt="MediPlus Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Randevular</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Hastalar</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reportsDropdown" role="button" data-bs-toggle="dropdown">
+                            Raporlar
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Klinik Raporları</a></li>
+                            <li><a class="dropdown-item" href="#">Hasta Analizleri</a></li>
+                            <li><a class="dropdown-item" href="#">Teşhis İstatistikleri</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <button class="btn-notification me-3" type="button">
+                        <i class="fas fa-bell fa-lg"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="dropdown">
+                        <a class="d-flex align-items-center text-decoration-none dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                            <span class="d-none d-md-block me-2 text-end">
+                                <span class="d-block text-dark fw-bold">Dr. Ahmet Yılmaz</span>
+                                <small class="text-muted">Dermatolog</small>
+                            </span>
+                            <img src="https://adaptcommunitynetwork.org/wp-content/uploads/2023/09/person-placeholder.jpg" alt="User Avatar" class="avatar">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Ayarlar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content container">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <h2 class="page-title">Hasta Cilt Fotoğrafları</h2>
+                <p class="page-subtitle">Teşhis ve takip için hasta cilt fotoğraflarını yönetin</p>
+            </div>
+            <div>
+                <a href="#" class="btn btn-outline-primary me-2">
+                    <i class="fas fa-arrow-left me-2"></i>Geri Dön
+                </a>
+            </div>
+        </div>
+
+        <!-- Patient Info Card -->
+        <div class="patient-info-card">
+            <img src="https://adaptcommunitynetwork.org/wp-content/uploads/2023/09/person-placeholder.jpg" alt="Patient Photo" class="patient-avatar">
+            <div class="patient-details">
+                <h4>Ali Demir</h4>
+                <p><i class="fas fa-id-card me-2"></i>Hasta No: #20256398</p>
+                <div class="d-flex gap-4">
+                    <p><i class="fas fa-birthday-cake me-2"></i>35 Yaş</p>
+                    <p><i class="fas fa-venus me-2"></i>Erkek</p>
+                </div>
+                <div class="patient-tags">
+                    <span class="patient-tag">Dermatoloji</span>
+                    <span class="patient-tag warning">Kontrol Randevusu</span>
+                    <span class="patient-tag danger">Alerji: Penisilin</span>
+                </div>
+            </div>
+            <div class="ms-auto d-none d-md-block">
+                <a href="#" class="btn btn-outline-primary">
+                    <i class="fas fa-file-medical me-2"></i>Hasta Geçmişi
+                </a>
+            </div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="card">
+            <div class="card-header">
+                <h5>Cilt Fotoğrafı Yükleme</h5>
+            </div>
+            <div class="card-body">
+                <div class="tabs-wrapper">
+                    <ul class="custom-tabs">
+                        <li class="custom-tab active" data-tab="upload">Fotoğraf Yükle</li>
+                        <li class="custom-tab" data-tab="history">Fotoğraf Geçmişi</li>
+                    </ul>
+                    <div class="tab-content" id="uploadTab">
+                        <div id="uploadSection">
+                            <div class="upload-area">
+                                <input type="file" class="upload-input" id="photoUpload" accept="image/*" multiple>
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="upload-text">
+                                    <h4>Cilt Fotoğraflarını Yükle</h4>
+                                    <p>Fotoğrafları sürükleyip bırakın veya dosya seçin.<br>PNG, JPG veya JPEG (max. 5MB)</p>
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>Dosya Seç
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="guidelines">
+                                <h5 class="mb-3">Fotoğraf Yükleme Yönergeleri</h5>
+                                <div class="guideline-item">
+                                    <div class="guideline-icon">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div class="guideline-text">
+                                        <h5>Kaliteli Görüntü</h5>
+                                        <p>En az 1080p çözünürlükte, iyi aydınlatılmış, odaklanmış fotoğraflar kullanın. Bulanık veya düşük çözünürlüklü görüntüler teşhisi zorlaştırabilir.</p>
+                                    </div>
+                                </div>
+
+                                <div class="guideline-item">
+                                    <div class="guideline-icon">
+                                        <i class="fas fa-ruler"></i>
+                                    </div>
+                                    <div class="guideline-text">
+                                        <h5>Ölçeklendirme Referansı</h5>
+                                        <p>Mümkünse, lezyonun boyutunu belirlemek için fotoğrafa bir cetvel veya ölçek referansı ekleyin.</p>
+                                    </div>
+                                </div>
+
+                                <div class="guideline-item">
+                                    <div class="guideline-icon">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </div>
+                                    <div class="guideline-text">
+                                        <h5>Hasta Mahremiyeti</h5>
+                                        <p>Hasta bilgilerini koruyun. Yüklenen fotoğraflar yalnızca tıbbi teşhis ve tedavi amacıyla kullanılacak ve hasta onayı olmadan paylaşılmayacaktır.</p>
+                                    </div>
+                                </div>
+
+                                <div class="guideline-item">
+                                    <div class="guideline-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <div class="guideline-text">
+                                        <h5>Çoklu Açılar</h5>
+                                        <p>Etkilenen bölgenin farklı açılardan çekilmiş fotoğraflarını yükleyin. Bu, lezyonun tam yapısını ve yayılımını değerlendirmeye yardımcı olur.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="previewSection" class="preview-section">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5>Yüklenen Fotoğraflar</h5>
+                             
+                            </div>
+
+                            <div class="image-previews" id="imagePreviews">
+                                <!-- Preview items will be added here dynamically -->
+                            </div>
+
+                            <div class="metadata-form">
+                                <h5 class="mb-3">Fotoğraf Metadata Bilgileri</h5>
+                                <div class="mb-3">
+                                    <label for="bodyLocation" class="form-label">Vücut Bölgesi</label>
+                                    <select class="form-select" id="bodyLocation">
+                                        <option value="" selected disabled>Bölge seçin</option>
+                                        <option value="head">Baş</option>
+                                        <option value="face">Yüz</option>
+                                        <option value="chest">Göğüs</option>
+                                        <option value="back">Sırt</option>
+                                        <option value="abdomen">Karın</option>
+                                        <option value="arms">Kollar</option>
+                                        <option value="hands">Eller</option>
+                                        <option value="legs">Bacaklar</option>
+                                        <option value="feet">Ayaklar</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="lesionType" class="form-label">Lezyon Tipi</label>
+                                    <select class="form-select" id="lesionType">
+                                        <option value="" selected disabled>Tip seçin</option>
+                                        <option value="macule">Makül</option>
+                                        <option value="papule">Papül</option>
+                                        <option value="nodule">Nodül</option>
+                                        <option value="plaque">Plak</option>
+                                        <option value="vesicle">Vezikül</option>
+                                        <option value="pustule">Püstül</option>
+                                        <option value="bulla">Bül</option>
+                                        <option value="wheal">Kabarıklık</option>
+                                        <option value="cyst">Kist</option>
+                                    </select>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label for="lesionSize" class="form-label">Lezyon Boyutu (cm)</label>
+                                        <input type="number" class="form-control" id="lesionSize" step="0.1" placeholder="Boyut girin">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="lesionDuration" class="form-label">Görülme Süresi</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="lesionDuration" placeholder="Süre">
+                                            <select class="form-select" id="durationUnit">
+                                                <option value="days">Gün</option>
+                                                <option value="weeks">Hafta</option>
+                                                <option value="months">Ay</option>
+                                                <option value="years">Yıl</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="symptoms" class="form-label">Belirtiler</label>
+                                    <div class="row">
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomPain">
+                                                <label class="form-check-label" for="symptomPain">Ağrı</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomItching">
+                                                <label class="form-check-label" for="symptomItching">Kaşıntı</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomBurning">
+                                                <label class="form-check-label" for="symptomBurning">Yanma</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomSwelling">
+                                                <label class="form-check-label" for="symptomSwelling">Şişlik</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomBleeding">
+                                                <label class="form-check-label" for="symptomBleeding">Kanama</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-6 mb-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="symptomDryness">
+                                                <label class="form-check-label" for="symptomDryness">Kuruluk</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="notes" class="form-label">Notlar</label>
+                                    <textarea class="form-control" id="notes" rows="3" placeholder="Ek bilgiler, gözlemler veya önceki tedaviler..."></textarea>
+                                </div>
+
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="patientConsent">
+                                    <label class="form-check-label" for="patientConsent">
+                                        Hasta, fotoğraflarının tıbbi amaçla kullanılmasına onay vermiştir.
+                                    </label>
+                                </div>
+
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-outline-primary me-2">İptal</button>
+                                    <button class="btn btn-primary" id="savePhotosBtn">Kaydet</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="historyTab" style="display: none;">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Arama...">
+                                        <button class="btn btn-outline-primary" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex justify-content-md-end mt-3 mt-md-0">
+                                    <div class="btn-group">
+                                        <button class="btn btn-outline-primary">
+                                            <i class="fas fa-filter me-2"></i>Filtrele
+                                        </button>
+                                        <button class="btn btn-outline-primary">
+                                            <i class="fas fa-sort me-2"></i>Sırala
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Tarih</th>
+                                            <th>Fotoğraf Sayısı</th>
+                                            <th>Vücut Bölgesi</th>
+                                            <th>Teşhis</th>
+                                            <th>Yükleyen</th>
+                                            <th>İşlemler</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>23.04.2025</td>
+                                            <td>5 fotoğraf</td>
+                                            <td>Yüz</td>
+                                            <td>Akne Vulgaris</td>
+                                            <td>Dr. Ahmet Yılmaz</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger ms-1">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>15.03.2025</td>
+                                            <td>3 fotoğraf</td>
+                                            <td>Kollar</td>
+                                            <td>Egzama</td>
+                                            <td>Dr. Mehmet Kaya</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger ms-1">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>02.02.2025</td>
+                                            <td>2 fotoğraf</td>
+                                            <td>Sırt</td>
+                                            <td>Psoriasis</td>
+                                            <td>Dr. Ahmet Yılmaz</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-outline-danger ms-1">
+                                                    <i class="fas fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 MediPlus Klinik Yönetim Sistemi. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Image Preview Modal -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Fotoğraf Önizleme</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="" alt="Fotoğraf Önizleme" class="fullscreen-img" id="previewImage">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Kapat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center py-4">
+                    <div class="mb-4">
+                        <i class="fas fa-check-circle text-success" style="font-size: 4rem;"></i>
+                    </div>
+                    <h4>Fotoğraflar Başarıyla Yüklendi!</h4>
+                    <p class="text-muted">Hasta dosyasına fotoğraflar eklendi ve kaydedildi.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Tamam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabs = document.querySelectorAll('.custom-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+
+                    // Remove active from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active to current tab
+                    this.classList.add('active');
+
+                    // Hide all tab contents
+                    document.getElementById('uploadTab').style.display = 'none';
+                    document.getElementById('historyTab').style.display = 'none';
+
+                    // Show current tab content
+                    if (tabId === 'upload') {
+                        document.getElementById('uploadTab').style.display = 'block';
+                    } else if (tabId === 'history') {
+                        document.getElementById('historyTab').style.display = 'block';
+                    }
+                });
+            });
+
+            // File upload handling
+            const photoUpload = document.getElementById('photoUpload');
+            const uploadSection = document.getElementById('uploadSection');
+            const previewSection = document.getElementById('previewSection');
+            const backToUpload = document.getElementById('backToUpload');
+            const imagePreviews = document.getElementById('imagePreviews');
+            const savePhotosBtn = document.getElementById('savePhotosBtn');
+
+            photoUpload.addEventListener('change', function(e) {
+                if (this.files.length > 0) {
+                    uploadSection.style.display = 'none';
+                    previewSection.style.display = 'block';
+
+                    // Clear previous previews
+                    imagePreviews.innerHTML = '';
+
+                    // Create previews for each selected file
+                    Array.from(this.files).forEach((file, index) => {
+                        const reader = new FileReader();
+
+                        reader.onload = function(e) {
+                            const previewItem = document.createElement('div');
+                            previewItem.className = 'preview-item';
+
+                            previewItem.innerHTML = `
+                                <img src="${e.target.result}" class="preview-img" alt="Preview Image">
+                                <span class="preview-tag">Fotoğraf ${index + 1}</span>
+                                <div class="preview-overlay">
+                                    <div class="preview-actions">
+                                        <button class="btn-preview preview-btn" data-src="${e.target.result}">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="btn-remove">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+
+                            imagePreviews.appendChild(previewItem);
+
+                            // Add event listeners for preview buttons
+                            const previewButtons = previewItem.querySelectorAll('.preview-btn');
+                            previewButtons.forEach(btn => {
+                                btn.addEventListener('click', function() {
+                                    const src = this.getAttribute('data-src');
+                                    const previewImage = document.getElementById('previewImage');
+                                    previewImage.src = src;
+
+                                    const previewModal = new bootstrap.Modal(document.getElementById('imagePreviewModal'));
+                                    previewModal.show();
+                                });
+                            });
+
+                            // Add event listeners for remove buttons
+                            const removeButtons = previewItem.querySelectorAll('.btn-remove');
+                            removeButtons.forEach(btn => {
+                                btn.addEventListener('click', function() {
+                                    previewItem.remove();
+                                    if (imagePreviews.children.length === 0) {
+                                        previewSection.style.display = 'none';
+                                        uploadSection.style.display = 'block';
+                                    }
+                                });
+                            });
+                        };
+
+                        reader.readAsDataURL(file);
+                    });
+                }
+            });
+
+            backToUpload.addEventListener('click', function() {
+                previewSection.style.display = 'none';
+                uploadSection.style.display = 'block';
+            });
+
+            savePhotosBtn.addEventListener('click', function() {
+                const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                successModal.show();
+
+                // Reset the form after success
+                setTimeout(() => {
+                    document.getElementById('bodyLocation').selectedIndex = 0;
+                    document.getElementById('lesionType').selectedIndex = 0;
+                    document.getElementById('lesionSize').value = '';
+                    document.getElementById('lesionDuration').value = '';
+                    document.getElementById('durationUnit').selectedIndex = 0;
+                    document.getElementById('notes').value = '';
+                    document.getElementById('patientConsent').checked = false;
+
+                    const checkboxes = document.querySelectorAll('.form-check-input[type="checkbox"]');
+                    checkboxes.forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+
+                    previewSection.style.display = 'none';
+                    uploadSection.style.display = 'block';
+                    imagePreviews.innerHTML = '';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
